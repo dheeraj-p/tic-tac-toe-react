@@ -1,0 +1,14 @@
+.board-row {
+  display: flex;
+  width: 300px;
+  height: 100px;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 100px;
+  align-items: center;
+  outline: 2px solid black;
+}
