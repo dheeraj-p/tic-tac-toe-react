@@ -1,3 +1,5 @@
+const { isSubset } = require('./utils');
+
 class Player {
   constructor(name, symbol) {
     this.name = name;
@@ -11,6 +13,16 @@ class Player {
 
   play(position) {
     this.moves.push(position);
+  }
+
+  hasWon(winningCombinations) {
+    return winningCombinations.some(combination =>
+      isSubset(combination, this.moves)
+    );
+  }
+
+  getName() {
+    return this.name;
   }
 }
 

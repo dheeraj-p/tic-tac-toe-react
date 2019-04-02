@@ -1,7 +1,19 @@
+const WINNING_COMBINATIONS = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7]
+];
+
 class Game {
   constructor(player1, player2) {
     this.players = [player1, player2];
     this.currentPlayerIndex = 0;
+    this.movesPlayed = 0;
   }
 
   playMove(position) {
@@ -14,7 +26,24 @@ class Game {
     }
 
     this.getCurrentPlayer().play(position);
+    this.movesPlayed++;
+    this.changeTurn();
     return { error: false, message: `` };
+  }
+
+  getStatus() {
+    if (this.movesPlayed == 9) {
+      return { status: 'DRAW' };
+    }
+    const winner = this.players.find(player =>
+      player.hasWon(WINNING_COMBINATIONS)
+    );
+
+    if (winner != undefined) {
+      return { status: 'SOMEONE_WON', winner: winner.getName() };
+    }
+
+    return { status: 'RUNNING' };
   }
 
   getCurrentPlayer() {
