@@ -1,24 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Cell from './square';
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
         <div className="board-row">
-          <div className="square">1</div>
-          <div className="square">2</div>
-          <div className="square">3</div>
+          <Cell value={1} />
+          <Cell value={2} />
+          <Cell value={3} />
         </div>
         <div className="board-row">
-          <div className="square">4</div>
-          <div className="square">5</div>
-          <div className="square">6</div>
+          <Cell value={4} />
+          <Cell value={5} />
+          <Cell value={6} />
         </div>
         <div className="board-row">
-          <div className="square">7</div>
-          <div className="square">8</div>
-          <div className="square">9</div>
+          <Cell value={7} />
+          <Cell value={8} />
+          <Cell value={9} />
         </div>
       </div>
     );
