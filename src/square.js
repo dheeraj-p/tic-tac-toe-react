@@ -3,11 +3,15 @@ import React from 'react';
 class Cell extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: props.value };
+    // console.log(this.props);
   }
 
   render() {
-    return <div className="cell">{this.state.value}</div>;
+    return (
+      <div className="cell" onClick={this.props.onClick}>
+        {this.props.value}
+      </div>
+    );
   }
 }
 

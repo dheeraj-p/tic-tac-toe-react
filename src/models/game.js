@@ -53,6 +53,17 @@ class Game {
   changeTurn() {
     this.currentPlayerIndex = (this.currentPlayerIndex + 1) % 2;
   }
+
+  generateBoard() {
+    const board = new Array(9).fill(' ');
+    this.players.forEach(player => {
+      player.moves.forEach(move => {
+        board[move - 1] = player.getSymbol();
+      });
+    });
+    return board;
+  }
 }
 
-module.exports = Game;
+// module.exports = Game;
+export default Game;

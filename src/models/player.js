@@ -24,6 +24,11 @@ class Player {
   getName() {
     return this.name;
   }
+
+  getSymbol() {
+    return this.symbol;
+  }
 }
 
-module.exports = Player;
+// module.exports = Player;
+export default Player;
