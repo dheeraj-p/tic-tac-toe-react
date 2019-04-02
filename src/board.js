@@ -18,6 +18,13 @@ class Board extends React.Component {
     this.setState(state => {
       const newState = { ...state };
       newState.game.playMove(cellId);
+
+      const gameStatus = newState.game.getStatus();
+      if (gameStatus.status != 'RUNNING') {
+        this.handleClick = () => {};
+      }
+
+      this.props.changeStatus(gameStatus.message);
       return newState;
     });
   }

@@ -33,17 +33,24 @@ class Game {
 
   getStatus() {
     if (this.movesPlayed == 9) {
-      return { status: 'DRAW' };
+      return { status: 'DRAW', message: 'Game draw.' };
     }
     const winner = this.players.find(player =>
       player.hasWon(WINNING_COMBINATIONS)
     );
 
     if (winner != undefined) {
-      return { status: 'SOMEONE_WON', winner: winner.getName() };
+      return {
+        status: 'SOMEONE_WON',
+        winner: winner.getName(),
+        message: `${winner.getName()} has won the game.`
+      };
     }
 
-    return { status: 'RUNNING' };
+    return {
+      status: 'RUNNING',
+      message: `${this.getCurrentPlayer().getName()}'s turn.`
+    };
   }
 
   getCurrentPlayer() {
