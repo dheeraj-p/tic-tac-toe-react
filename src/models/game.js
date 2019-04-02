@@ -1,22 +1,28 @@
 class Game {
   constructor(player1, player2) {
-    this.player1 = player1;
-    this.player2 = player2;
-
-    this.currentPlayer = player1;
+    this.players = [player1, player2];
+    this.currentPlayerIndex = 0;
   }
 
   playMove(position) {
-    const response = this.currentPlayer.play(position);
-    if (!response.error) {
-      this.changeTurn();
+    const isPositionOccupied = this.players.some(player =>
+      player.hasAlreadyPlayedAt(position)
+    );
+
+    if (isPositionOccupied) {
+      return { error: true, message: `Can't play on position ${position}` };
     }
-    return response;
+
+    this.getCurrentPlayer().play(position);
+    return { error: false, message: `` };
+  }
+
+  getCurrentPlayer() {
+    return this.players[this.currentPlayerIndex];
   }
 
   changeTurn() {
-    this.currentPlayer =
-      this.currentPlayer === this.player1 ? this.player2 : this.player1;
+    this.currentPlayerIndex = (this.currentPlayerIndex + 1) % 2;
   }
 }
 

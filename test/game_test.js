@@ -12,6 +12,17 @@ describe('Game#playMove', function() {
 
     assert.equal(false, response.error);
   });
+
+  it('should not place the symbol on the given position if that position is already occupied', function() {
+    const dheeraj = new Player('Dheeraj', 'X');
+    const chandan = new Player('Chandan', 'Y');
+    const game = new Game(dheeraj, chandan);
+
+    game.playMove(1);
+    const response = game.playMove(1);
+
+    assert.equal(true, response.error);
+  });
 });
 
 describe('Game#changeTurn', function() {
@@ -21,7 +32,6 @@ describe('Game#changeTurn', function() {
     const game = new Game(dheeraj, chandan);
 
     game.changeTurn();
-
-    assert.equal(chandan, game.currentPlayer);
+    assert.equal(chandan, game.getCurrentPlayer());
   });
 });

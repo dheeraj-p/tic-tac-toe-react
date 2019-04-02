@@ -5,12 +5,12 @@ class Player {
     this.moves = [];
   }
 
+  hasAlreadyPlayedAt(position) {
+    return this.moves.includes(position);
+  }
+
   play(position) {
-    if (this.moves.includes(position)) {
-      return { error: true, message: `Can't play on position ${position}` };
-    }
     this.moves.push(position);
-    return { error: false, message: '' };
   }
 }
 
