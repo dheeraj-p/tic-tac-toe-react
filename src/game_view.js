@@ -4,7 +4,7 @@ import Board from './board';
 class GameView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { status: 'Game Started' };
+    this.state = { status: `Player1's turn` };
   }
 
   changeStatus(status) {

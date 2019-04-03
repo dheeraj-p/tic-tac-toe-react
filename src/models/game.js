@@ -32,9 +32,6 @@ class Game {
   }
 
   getStatus() {
-    if (this.movesPlayed == 9) {
-      return { status: 'DRAW', message: 'Game draw.' };
-    }
     const winner = this.players.find(player =>
       player.hasWon(WINNING_COMBINATIONS)
     );
@@ -45,6 +42,10 @@ class Game {
         winner: winner.getName(),
         message: `${winner.getName()} has won the game.`
       };
+    }
+
+    if (this.movesPlayed == 9) {
+      return { status: 'DRAW', message: 'Game draw.' };
     }
 
     return {
