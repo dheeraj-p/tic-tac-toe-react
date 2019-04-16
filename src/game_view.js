@@ -14,6 +14,8 @@ class GameView extends React.Component {
   render() {
     return (
       <div>
+        <div style={{ fontSize: '20px' }}>Player1 : X</div>
+        <div style={{ fontSize: '20px' }}>Player1 : O</div>
         <h3>{this.state.status}</h3>
         <Board changeStatus={this.changeStatus.bind(this)} />
       </div>
